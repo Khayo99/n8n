@@ -29,7 +29,7 @@ services:
     volumes:
       - ./:/home/node/.n8n
     environment:
-      WEBHOOK_URL: http://host.docker.internal:5678
+      WEBHOOK_URL: http://localhost:5678
       N8N_HOST: host.docker.internal
       GENERIC_TIMEZONE: "America/Sao_Paulo"
       N8N_LOG_LEVEL: debug

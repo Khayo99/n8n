@@ -1,0 +1,2 @@
+{"__type":"$$EventMessageAudit","id":"ead8c251-596d-4f51-9dd5-459e6e590195","ts":"2025-10-22T23:17:30.656-03:00","eventName":"n8n.audit.workflow.updated","message":"n8n.audit.workflow.updated","payload":{"userId":"fd28c001-bab2-4d27-bd75-9718ad9499f9","_email":"khayolima2001@gmail.com","_firstName":"Khayo","_lastName":"Lima","globalRole":"global:owner","workflowId":"uJ2KzW4SnD4tuaYj","workflowName":"Devolop_khayo"}}
+{"__type":"$$EventMessageConfirm","confirm":"ead8c251-596d-4f51-9dd5-459e6e590195","ts":"2025-10-22T23:17:30.656-03:00","source":{"id":"0","name":"eventBus"}}
