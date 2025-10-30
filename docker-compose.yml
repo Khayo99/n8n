@@ -8,12 +8,19 @@ services:
       REDIS_PASSWORD: default
     ports:
       - "6379:6379"
+    networks:
+      - n8n-network
 
   waha:
     image: devlikeapro/waha:latest
     platform: linux/amd64
     environment:
-      WHATSAPP_HOOK_URL: http://localhost:5678/webhook/webhook
+      WHATSAPP_API_KEY: "6a35b8469d91432db7a896fc6e3dd4f2"
+      WAHA_DASHBOARD_USERNAME: "admin"
+      WAHA_DASHBOARD_PASSWORD: "123456"
+      WHATSAPP_SWAGGER_USERNAME: "admin"
+      WHATSAPP_SWAGGER_PASSWORD: "123456"
+      WHATSAPP_HOOK_URL: http://n8n-teste:5678/webhook/webhook
       WHATSAPP_DEFAULT_ENGINE: GOWS
       WHATSAPP_HOOK_EVENTS: message
     volumes:
@@ -21,6 +28,8 @@ services:
       - waha_media:/app/.media
     ports:
       - "3003:3000"
+    networks:
+      - n8n-network
 
   n8n-teste:
     image: n8nio/n8n
@@ -29,18 +38,19 @@ services:
     volumes:
       - ./:/home/node/.n8n
     environment:
-      WEBHOOK_URL: http://localhost:5678
-      N8N_HOST: host.docker.internal
+      WEBHOOK_URL: http://n8n-teste:5678
+      N8N_HOST: n8n-teste
       GENERIC_TIMEZONE: "America/Sao_Paulo"
       N8N_LOG_LEVEL: debug
       N8N_COMMUNITY_PACKAGES_ALLOW_TOOL_USAGE: true
     restart: unless-stopped
+    networks:
+      - n8n-network
 
 networks:
   n8n-network:
     driver: bridge
 
 volumes:
-  pgdata:
   waha_sessions:
   waha_media:
